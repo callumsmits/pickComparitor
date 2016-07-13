@@ -580,7 +580,7 @@ def main():
 #   Get list of Images for source of training material
 
     micrograph_data = {}
-    searchFields = ['_rlnDefocusU', '_rlnMicrographName']
+    searchFields = ['_rlnMicrographName']
     searchDict = {}
     with open(starFileName, 'r') as starFile:
       for l in range(0,15):
@@ -593,8 +593,7 @@ def main():
         if line.strip():
           fields = line.split()
           mrc_name = fields[searchDict['_rlnMicrographName']]
-          ctf_info = {'defocus_u':float(fields[searchDict['_rlnDefocusU']])}
-          micrograph_data[mrc_name] = ctf_info
+          micrograph_data[mrc_name] = mrc_name
 
     app = QtGui.QApplication(sys.argv)
     wi = MainWindow()
